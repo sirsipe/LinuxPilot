@@ -1,0 +1,26 @@
+{
+  "name": "LinuxPilot",
+  "build": { "dockerfile": "../Dockerfile", "context": ".." },
+  "workspaceFolder": "/workspaces/LinuxPilot",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/LinuxPilot,type=bind",
+  "remoteUser": "tester",
+  "updateRemoteUserUID": false,
+  "overrideCommand": false,
+  "containerEnv": { "DESKTOP_SIZE": "1920x1080", "UIAUTO_HOST": "carla" },
+  "runArgs": ["--shm-size=1g"],
+  "mounts": [
+    "source=${localWorkspaceFolder}/plugins,target=/home/tester/.vst3,type=bind,readonly",
+    "source=carla-uiauto-config,target=/home/tester/.config,type=volume"
+  ],
+  "forwardPorts": [6080],
+  "portsAttributes": {
+    "6080": { "label": "LinuxPilot desktop (noVNC)", "onAutoForward": "notify" }
+  },
+  "postCreateCommand": "python -m pip install -e . && python -m unittest discover -s tests -v",
+  "customizations": {
+    "vscode": {
+      "extensions": ["ms-python.python", "ms-vscode.cpptools", "ms-vscode.cmake-tools", "openai.chatgpt"],
+      "settings": { "python.defaultInterpreterPath": "/opt/venv/bin/python" }
+    }
+  }
+}

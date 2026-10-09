@@ -1,0 +1,13 @@
+.env
+tasks/
+.venv/
+__pycache__/
+*.egg-info/
+artifacts/*
+!artifacts/.gitkeep
+plugins/*
+!plugins/.gitkeep
+projects/*
+!projects/.gitkeep
+knowledge/*.json
+knowledge/*.lock

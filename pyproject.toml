@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "linuxpilot"
+version = "0.1.0"
+description = "AI-driven Linux desktop automation with vision, planning, and evidence-linked knowledge"
+requires-python = ">=3.10"
+dependencies = ["xa11y==0.15.2"]
+
+[project.scripts]
+linuxpilot = "uiautomation.cli:main"
+uiauto = "uiautomation.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+uiautomation = ["guides/*.md"]

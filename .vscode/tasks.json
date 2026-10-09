@@ -1,0 +1,35 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "LinuxPilot: check desktop",
+      "type": "process",
+      "command": "linuxpilot",
+      "args": ["doctor", "--desktop-only"],
+      "problemMatcher": []
+    },
+    {
+      "label": "LinuxPilot: Carla smoke test",
+      "type": "process",
+      "command": "linuxpilot",
+      "args": ["smoke"],
+      "problemMatcher": [],
+      "group": "test"
+    },
+    {
+      "label": "LinuxPilot: Holo dry run",
+      "type": "process",
+      "command": "linuxpilot",
+      "args": ["run", "Open Carla's Add Plugin dialog and verify it is visible.", "--dry-run"],
+      "problemMatcher": []
+    },
+    {
+      "label": "LinuxPilot: agent unit tests",
+      "type": "process",
+      "command": "python",
+      "args": ["-m", "unittest", "discover", "-s", "tests", "-v"],
+      "problemMatcher": [],
+      "group": "test"
+    }
+  ]
+}
